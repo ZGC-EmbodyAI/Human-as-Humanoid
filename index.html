@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Human-as-Humanoid: Enabling Zero-Shot Humanoid Learning from Ego-Exo Human Videos</title>
+<meta name="description" content="Human-as-Humanoid: a human-to-humanoid supervision pipeline that converts synchronized ego-exo human videos into controller-aligned action chunks for high-DoF humanoid VLA training (PhysDex).">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <div class="container">
+    <div class="org-logos" aria-hidden="true">
+      <span class="logo-placeholder">Institution Logo</span>
+      <span class="logo-placeholder">Institution Logo</span>
+      <span class="logo-placeholder">Institution Logo</span>
+    </div>
+
+    <p class="venue-tag">CoRL 2026</p>
+
+    <h1 class="paper-title">
+      <span class="accent">Human-as-Humanoid</span>
+      <br>Enabling Zero-Shot Humanoid Learning from Ego-Exo Human Videos
+      <br>with Human-Aligned Embodiments
+    </h1>
+
+    <p class="model-badge">featuring <strong>PrimeU</strong> &middot; a human-aligned 60-DoF humanoid &nbsp;&amp;&nbsp; <strong>PhysDex</strong> &middot; an FK-aware VLA policy</p>
+
+    <div class="authors">
+      <span class="author">Author Names</span>
+    </div>
+    <div class="affiliations">
+      Institution
+    </div>
+
+    <nav class="links" aria-label="Resource links">
+      <a href="#" class="btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        Paper
+      </a>
+      <a href="#" class="btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+        arXiv
+      </a>
+      <a href="#" class="btn btn-outline">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+        Code
+      </a>
+      <a href="#bibtex" class="btn btn-outline">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17V7a2 2 0 012-2h6.5L21 8.5V17a2 2 0 01-2 2H9a2 2 0 01-2-2zM9 17H7a2 2 0 01-2-2V5a2 2 0 012-2h6l2 2"/></svg>
+        BibTeX
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ================= TEASER ================= -->
+  <section class="section teaser-section">
+    <div class="container">
+      <div class="media-frame">
+        <video class="teaser-video" autoplay muted loop playsinline poster="figures/teaser.jpg">
+          <source src="videos/teaser.mp4" type="video/mp4">
+        </video>
+        <img src="figures/teaser.jpg" alt="Human-as-Humanoid overview teaser" class="teaser-fallback-img">
+      </div>
+      <p class="caption">
+        <strong>Human-as-Humanoid</strong> converts synchronized ego-exo human videos into executable <strong>60-DoF</strong> humanoid actions near the video capture rate &mdash; replacing teleoperation-bound data collection with a 4.8&ndash;7.2&times; faster human-to-robot conversion chain, validated end-to-end on real <strong>PrimeU</strong> hardware.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= ABSTRACT ================= -->
+  <section class="section" id="abstract">
+    <div class="container narrow">
+      <div class="kicker">Abstract</div>
+      <h2 class="section-title">Abstract</h2>
+      <p class="abstract-text">
+        Vision-language-action (VLA) models across robot embodiments require high-quality observation&ndash;action supervision to learn deployable action distributions, yet scaling such robot data remains difficult, especially for high-DoF humanoids. Teleoperation provides controller-aligned supervision, while human egocentric videos capture diverse bimanual manipulation but do not directly provide executable robot actions. We introduce <span class="accent">Human-as-Humanoid</span>, a human-to-humanoid supervision framework that enables near-real-time human-centric action generation, making human demonstrations usable for high-DoF humanoid VLA training by jointly aligning the robot embodiment, the sensing setup, and the action-label interface. Built on <strong>PrimeU</strong>, a human-aligned 60-DoF upper-body humanoid, Human-as-Humanoid uses synchronized ego-exo videos to pair deployment-aligned egocentric observations with exocentric motion recovery, retargets the recovered human motion through staged Inverse Kinematics (IK) into controller-aligned 60-DoF action chunks, and trains the VLA model with Forward Kinematics (FK)-aware supervision to preserve wrist and fingertip task-space geometry. This converts large-scale human demonstrations from visual observations into executable observation&ndash;action supervision for the target humanoid. Experiments validate the conversion chain at the motion-recovery, robot-action-space, and real-robot deployment levels. Human-as-Humanoid yields a <strong>4.8&ndash;7.2&times;</strong> raw demonstration-throughput gain over humanoid teleoperation in our data-collection analysis, and on several downstream tasks, policies post-trained only with the converted human labels generalize to real-robot deployment without target-task robot demonstrations.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= REQUIREMENTS / CONTRIBUTIONS ================= -->
+  <section class="section alt">
+    <div class="container">
+      <div class="kicker">Why It's Hard</div>
+      <h2 class="section-title">Four Coupled Requirements</h2>
+      <p class="section-intro">Converting human video into robot-executable supervision is not just "collect more video." It exposes four coupled requirements that <span class="accent">Human-as-Humanoid</span> addresses jointly.</p>
+      <div class="req-grid">
+        <div class="req-card">
+          <div class="req-num">i</div>
+          <h3>Embodiment Alignment</h3>
+          <p>Robot morphology and sensing layout stay compatible with human demonstrations, reducing retargeting error from body scale, workspace, and viewpoint gaps.</p>
+        </div>
+        <div class="req-card">
+          <div class="req-num">ii</div>
+          <h3>Observation&ndash;Motion Compatibility</h3>
+          <p>Egocentric streams give deployment-aligned policy inputs; exocentric views give robust upper-body and hand recovery under occlusion.</p>
+        </div>
+        <div class="req-card">
+          <div class="req-num">iii</div>
+          <h3>Action-Interface Alignment</h3>
+          <p>Converted labels respect the robot's joint ordering, URDF convention, joint limits, and controller interface &mdash; not just task-space intent.</p>
+        </div>
+        <div class="req-card">
+          <div class="req-num">iv</div>
+          <h3>Joint&ndash;Task Consistency</h3>
+          <p>Executable joint commands preserve the wrist and fingertip geometry that contact-rich manipulation depends on.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EMBODIMENT ================= -->
+  <section class="section" id="embodiment">
+    <div class="container">
+      <div class="kicker">Embodiment</div>
+      <h2 class="section-title">PrimeU: A Human-Aligned Humanoid</h2>
+      <p class="section-intro">
+        Instead of treating human-to-robot transfer as a purely post-hoc retargeting problem, <span class="accent">Human-as-Humanoid</span> starts from the embodiment. PrimeU's upper body follows standard adult-male manipulation proportions &mdash; height, shoulder width, and arm length &mdash; so common human demonstrations occupy a workspace close to the robot's reachable workspace.
+      </p>
+      <figure class="fig-block zoomable">
+        <img src="figures/primeu.jpg" alt="PrimeU human-aligned humanoid embodiment" loading="lazy">
+        <figcaption class="caption">
+          PrimeU: two 7-DoF arms, two 20-DoF Wuji dexterous hands, a 3-DoF neck, and a 3-DoF waist (60 DoF total). Head- and wrist-view Intel RealSense D435 cameras match the viewpoint structure used by the deployed VLA policy.
+        </figcaption>
+      </figure>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <caption>Action-relevant anthropometric scale alignment (human values: 50th-percentile male, ANSUR&nbsp;II).</caption>
+          <thead>
+            <tr><th>Dimension</th><th>Human (cm)</th><th>PrimeU (cm)</th><th>Ratio</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Shoulder breadth</td><td>41.5</td><td>40.4</td><td>0.97</td></tr>
+            <tr><td>Shoulder-to-head height</td><td>31.5</td><td>37.1</td><td>1.18</td></tr>
+            <tr><td>Shoulder-to-middle-fingertip reach</td><td>78.6</td><td>80.3</td><td>1.02</td></tr>
+            <tr><td>Hand length</td><td>19.3</td><td>19.3</td><td>1.00</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= METHOD ================= -->
+  <section class="section alt" id="method">
+    <div class="container">
+      <div class="kicker">Method</div>
+      <h2 class="section-title">Near-Real-Time Human-to-Humanoid Conversion</h2>
+      <p class="section-intro">
+        Synchronized ego-exo human videos are converted into executable humanoid action labels at collection time. Egocentric views provide deployment-aligned observations; exocentric views support robust upper-body and hand motion recovery. A staged IK solver then retargets the recovered skeleton into controller-aligned 60-DoF action chunks, and a flow-matching VLA (<strong>PhysDex</strong>) is trained with FK-aware supervision (DS-HKC) that preserves wrist and fingertip geometry.
+      </p>
+      <figure class="fig-block zoomable">
+        <img src="figures/network.jpg" alt="Human-as-Humanoid and PhysDex pipeline overview" loading="lazy">
+        <figcaption class="caption">
+          (Top) Ego-exo human videos are converted into controller-aligned 60-DoF robot action labels via tracking, mesh-aware motion recovery, and staged IK retargeting. (Bottom) PhysDex trains in the same robot action space: a flow-matching DiT predicts joint action chunks conditioned on a PhysBrain VLM backbone, while Dual-Space Hierarchical Kinematic Constraint (DS-HKC) applies differentiable FK supervision through wrist poses and fingertip positions.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= MOTION RECOVERY ================= -->
+  <section class="section" id="motion-recovery">
+    <div class="container">
+      <div class="kicker">Validation &middot; Motion Recovery</div>
+      <h2 class="section-title">Ego-Exo Motion Recovery vs. Wearable Mocap</h2>
+      <p class="section-intro">
+        Camera-only ego-exo recovery is compared against a wearable inertial motion-capture suit by projecting recovered skeletons back onto the human video. The wearable suit shows visible drift from accumulated global-position error; ego-exo recovery maintains closer alignment with the observed body and hands, without giving up the egocentric stream needed for deployment-aligned policy observations.
+      </p>
+      <figure class="fig-block zoomable">
+        <img src="figures/ego_exo_recovery.jpg" alt="Projection-based comparison of ego-exo recovery vs wearable motion capture" loading="lazy">
+        <figcaption class="caption">
+          Projection-based comparison between human video, camera-only ego-exo motion recovery, and wearable motion capture at matched relative timestamps.
+        </figcaption>
+      </figure>
+      <figure class="fig-block zoomable">
+        <img src="figures/ego_exo_compare.jpg" alt="End-to-end ego-exo conversion and replay" loading="lazy">
+        <figcaption class="caption">
+          End-to-end conversion and replay at matched timestamps: source human video, recovered skeleton keypoints, simulator replay, and real-robot replay &mdash; preserving approach, grasp, transfer, and release phases.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= ACTION INTERFACE COMPATIBILITY ================= -->
+  <section class="section alt" id="action-interface">
+    <div class="container">
+      <div class="kicker">Validation &middot; Action Space</div>
+      <h2 class="section-title">Action-Interface Compatibility</h2>
+      <p class="section-intro">
+        Do human-derived 60-DoF action chunks land in the same action space as real PrimeU trajectories? A discrete action tokenizer trained <em>only</em> on human-derived actions is evaluated on held-out real-robot windows it never saw during fitting.
+      </p>
+      <div class="table-wrap">
+        <table class="data-table">
+          <caption>Action-interface compatibility diagnostics. 100 real-robot evaluation windows; lower is better.</caption>
+          <thead>
+            <tr><th>Diagnostic</th><th>Training data</th><th>Eval.</th><th>Norm. MAE<br><span class="th-sub">mean / p95</span></th><th>EE error (mm)<br><span class="th-sub">mean / p95</span></th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Cross-domain</td><td>Human only</td><td>Robot</td><td>0.0080 / 0.0097</td><td>5.34 / 12.67</td></tr>
+            <tr><td>In-domain baseline</td><td>Robot only</td><td>Robot</td><td>0.0099 / 0.0117</td><td>4.09 / 6.84</td></tr>
+            <tr><td>Mixed-domain</td><td>Robot + human data</td><td>Robot</td><td>0.0096 / 0.0114</td><td>4.86 / 9.11</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="caption center">
+        The human-only tokenizer never sees robot trajectories during fitting, yet reconstructs unseen real-robot windows with a mean normalized MAE of <strong>0.0080</strong> and mean bimanual end-effector error of <strong>5.34&nbsp;mm</strong> &mdash; close to the in-domain robot-only baseline.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= FK-AWARE TRAINING ================= -->
+  <section class="section" id="fk-training">
+    <div class="container">
+      <div class="kicker">Validation &middot; FK-Aware Training</div>
+      <h2 class="section-title">DS-HKC Improves Optimization Geometry</h2>
+      <p class="section-intro">
+        FK-aware supervision is not just an auxiliary penalty: it couples the 60 joint dimensions through the robot kinematic chain, measuring whether induced wrist and fingertip poses stay consistent with task-space manipulation geometry.
+      </p>
+      <figure class="fig-block zoomable">
+        <img src="figures/loss_storyline.jpg" alt="Training loss comparison for FK-aware VLA action learning" loading="lazy">
+        <figcaption class="caption">
+          Training-loss comparison for high-DoF VLA action learning. FK-aware supervision reduces the loss by constraining the joint prediction through robot kinematics; the PhysBrain-initialized FK-aware model reaches the lowest loss under the same training budget.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= REAL ROBOT DEPLOYMENT ================= -->
+  <section class="section alt" id="deployment">
+    <div class="container">
+      <div class="kicker">Real-Robot Deployment</div>
+      <h2 class="section-title">Zero Target-Task Robot Demonstrations</h2>
+      <p class="section-intro">
+        PhysDex, post-trained only with Human-as-Humanoid converted labels, deploys on real high-DoF manipulation tasks &mdash; ring placement, magic-cube packing, water pouring, cup stacking, and more &mdash; several without any target-task robot demonstrations.
+      </p>
+
+      <div class="carousel" id="task-carousel">
+        <button class="carousel-arrow prev" aria-label="Previous task">&#8592;</button>
+        <div class="carousel-track-wrap">
+          <div class="carousel-track">
+            <figure class="carousel-slide"><img src="figures/task_rollouts.jpg" alt="Real-robot rollout: synchronized egocentric and third-person views across seven tasks" loading="lazy"><figcaption>Synchronized rollout frames across the seven-task suite. Upper row: egocentric policy observation. Lower row: third-person visualization view, matched phases from early to late execution.</figcaption></figure>
+            <figure class="carousel-slide"><img src="figures/setup.jpg" alt="Ego-exo data collection setup" loading="lazy"><figcaption>Ego-exo data-collection setup. Egocentric cameras provide policy-aligned observations; synchronized exocentric cameras provide complementary evidence for upper-body and hand motion recovery.</figcaption></figure>
+            <figure class="carousel-slide"><img src="figures/capture_setup.jpg" alt="Capture rig" loading="lazy"><figcaption>Capture rig used for synchronized ego-exo human demonstration collection.</figcaption></figure>
+          </div>
+        </div>
+        <button class="carousel-arrow next" aria-label="Next task">&#8594;</button>
+      </div>
+
+      <figure class="fig-block">
+        <img src="figures/final_success.png" alt="Stage-final composite score across seven real-robot tasks" loading="lazy">
+        <figcaption class="caption">
+          Stage-final composite score in real-robot deployment across seven tasks. PhysDex obtains higher composite scores than GR00T&nbsp;N1.7, with the largest gains in the human-only adaptation regime where target-task training uses converted human demonstrations without any robot demonstrations.
+        </figcaption>
+      </figure>
+
+      <div class="video-grid">
+        <div class="video-card">
+          <video controls poster="figures/task_rollouts.jpg"><source src="videos/ring_placement.mp4" type="video/mp4"></video>
+          <p class="video-label">Ring Placement</p>
+        </div>
+        <div class="video-card">
+          <video controls poster="figures/task_rollouts.jpg"><source src="videos/bag_packing.mp4" type="video/mp4"></video>
+          <p class="video-label">Magic-Cube Packing</p>
+        </div>
+        <div class="video-card">
+          <video controls poster="figures/task_rollouts.jpg"><source src="videos/water_pouring.mp4" type="video/mp4"></video>
+          <p class="video-label">Water Pouring</p>
+        </div>
+        <div class="video-card">
+          <video controls poster="figures/task_rollouts.jpg"><source src="videos/cap_twisting.mp4" type="video/mp4"></video>
+          <p class="video-label">Bottle-Cap Loosening</p>
+        </div>
+      </div>
+      <p class="caption center video-note">Video clips are placeholders &mdash; replace files in <code>videos/</code> with real rollout recordings.</p>
+    </div>
+  </section>
+
+  <!-- ================= LIMITATIONS ================= -->
+  <section class="section" id="limitations">
+    <div class="container narrow">
+      <div class="kicker">Discussion</div>
+      <h2 class="section-title">Limitations</h2>
+      <p class="abstract-text small">
+        Pose-estimation quality bounds downstream retargeting quality, and IK quality bounds policy quality since human-derived data inherits the robot model, joint limits, and calibration used by the retargeter. The pipeline is tied to PrimeU's specific URDF and joint convention; transferring to a new embodiment requires re-retargeting. Human-derived actions also capture kinematics more directly than contact forces, so robot data remains important for anchoring, evaluation, and contact-rich refinement. The zero-shot claim refers to target-task deployment <em>without target-task robot demonstrations</em>, not to eliminating all robot-specific modeling assumptions.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= BIBTEX ================= -->
+  <section class="section alt" id="bibtex">
+    <div class="container narrow">
+      <div class="kicker">Cite</div>
+      <h2 class="section-title">BibTeX</h2>
+      <div class="bibtex-box">
+        <button class="copy-btn" id="copy-bibtex" type="button">Copy</button>
+        <pre id="bibtex-code">@inproceedings{humanashumanoid2026,
+  title     = {Human-as-Humanoid: Enabling Zero-Shot Humanoid Learning from Ego-Exo Human Videos with Human-Aligned Embodiments},
+  author    = {Author Names},
+  booktitle = {Conference on Robot Learning (CoRL)},
+  year      = {2026}
+}</pre>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="container">
+    <p>We gratefully acknowledge the DeepCybo hardware team for their support in developing and integrating the humanoid platform, and Wuji for technical support on the dexterous-hand system.</p>
+    <p class="footer-credit">Website built with a custom template synthesizing design elements from several academic project pages. Source available on request.</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
