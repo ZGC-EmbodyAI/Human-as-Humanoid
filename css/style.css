@@ -56,22 +56,24 @@ img, video { max-width: 100%; display: block; }
 .org-logos {
   display: flex;
   justify-content: center;
-  gap: 14px;
+  align-items: center;
+  gap: 30px;
   flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.org-logos img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+.org-logos-secondary {
   margin-bottom: 28px;
 }
 
-.logo-placeholder {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 40px;
-  padding: 0 16px;
-  border: 1px dashed var(--line);
-  border-radius: 8px;
-  font-size: 0.78rem;
-  color: var(--muted);
-  background: var(--surface);
+.org-logos-secondary img {
+  height: 56px;
 }
 
 .venue-tag {
