@@ -504,6 +504,7 @@ html[data-theme="dark"] .ic-moon { display: none; }
 .task-video-pair .task-video:first-child video {
   height: 100%;
   aspect-ratio: auto;
+  object-fit: contain;
 }
 .task-video-tag {
   position: absolute; top: 10px; left: 10px;
@@ -846,6 +847,7 @@ html[data-theme="dark"] .ic-moon { display: none; }
   .task-video-pair .task-video:first-child video {
     height: auto;
     aspect-ratio: 16/10;
+    object-fit: contain;
   }
   .figure-card {
     padding: 10px;
