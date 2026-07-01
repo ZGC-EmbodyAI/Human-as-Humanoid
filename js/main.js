@@ -1,4 +1,76 @@
-// Copy-to-clipboard for BibTeX
+/* ── Dark mode ──────────────────────────────────────────────── */
+(function () {
+  var btn = document.getElementById('theme-btn');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem('hah-theme', next); } catch (e) {}
+  });
+})();
+
+/* ── Progress bar ───────────────────────────────────────────── */
+(function () {
+  var bar = document.getElementById('progress-bar');
+  if (!bar) return;
+  function update() {
+    var h = document.documentElement;
+    var pct = (h.scrollTop || document.body.scrollTop) / ((h.scrollHeight || document.body.scrollHeight) - window.innerHeight) * 100;
+    bar.style.width = Math.min(pct, 100) + '%';
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+
+/* ── Scroll reveal ──────────────────────────────────────────── */
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  if (!els.length) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(function (el) { io.observe(el); });
+})();
+
+/* ── Nav active link on scroll ──────────────────────────────── */
+(function () {
+  var links = document.querySelectorAll('.nav-links a');
+  if (!links.length) return;
+  var sections = Array.from(links).map(function (a) {
+    return document.querySelector(a.getAttribute('href'));
+  }).filter(Boolean);
+
+  function onScroll() {
+    var y = window.scrollY + 80;
+    var active = null;
+    sections.forEach(function (s) { if (s.offsetTop <= y) active = s; });
+    links.forEach(function (a) {
+      var matches = active && a.getAttribute('href') === '#' + active.id;
+      a.style.background = matches ? 'var(--accent-ghost)' : '';
+      a.style.color = matches ? 'var(--accent)' : '';
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+/* ── Carousel ───────────────────────────────────────────────── */
+(function () {
+  var carousel = document.getElementById('task-carousel');
+  if (!carousel) return;
+  var track = carousel.querySelector('.carousel-track');
+  var slides = carousel.querySelectorAll('.carousel-slide');
+  var prev = carousel.querySelector('.prev');
+  var next = carousel.querySelector('.next');
+  var idx = 0;
+  function go(n) { idx = (n + slides.length) % slides.length; track.style.transform = 'translateX(-' + idx * 100 + '%)'; }
+  prev.addEventListener('click', function () { go(idx - 1); });
+  next.addEventListener('click', function () { go(idx + 1); });
+})();
+
+/* ── BibTeX copy ────────────────────────────────────────────── */
 (function () {
   var btn = document.getElementById('copy-bibtex');
   var code = document.getElementById('bibtex-code');
@@ -7,76 +79,37 @@
     navigator.clipboard.writeText(code.textContent.trim()).then(function () {
       btn.textContent = 'Copied!';
       btn.classList.add('copied');
-      setTimeout(function () {
-        btn.textContent = 'Copy';
-        btn.classList.remove('copied');
-      }, 1800);
+      setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1800);
     });
   });
 })();
 
-// Carousel
+/* ── Lightbox zoom ──────────────────────────────────────────── */
 (function () {
-  var carousel = document.getElementById('task-carousel');
-  if (!carousel) return;
-  var track = carousel.querySelector('.carousel-track');
-  var slides = carousel.querySelectorAll('.carousel-slide');
-  var prev = carousel.querySelector('.prev');
-  var next = carousel.querySelector('.next');
-  var index = 0;
+  var box = document.getElementById('lightbox');
+  var img = document.getElementById('lightbox-img');
+  if (!box || !img) return;
 
-  function update() {
-    track.style.transform = 'translateX(-' + (index * 100) + '%)';
-  }
-
-  prev.addEventListener('click', function () {
-    index = (index - 1 + slides.length) % slides.length;
-    update();
-  });
-
-  next.addEventListener('click', function () {
-    index = (index + 1) % slides.length;
-    update();
-  });
-})();
-
-// Lightbox zoom for figures
-(function () {
-  var overlay = document.createElement('div');
-  overlay.className = 'lightbox-overlay';
-  var overlayImg = document.createElement('img');
-  overlay.appendChild(overlayImg);
-  document.body.appendChild(overlay);
-
-  function close() {
-    overlay.classList.remove('active');
-  }
-
-  overlay.addEventListener('click', close);
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') close();
-  });
-
-  document.querySelectorAll('.zoomable img').forEach(function (img) {
-    img.addEventListener('click', function () {
-      overlayImg.src = img.src;
-      overlayImg.alt = img.alt;
-      overlay.classList.add('active');
+  document.querySelectorAll('.figure-card img, .hero-teaser img').forEach(function (el) {
+    el.addEventListener('click', function () {
+      img.src = el.src; img.alt = el.alt;
+      box.classList.add('active');
     });
   });
+  box.addEventListener('click', function () { box.classList.remove('active'); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') box.classList.remove('active'); });
 })();
 
-// Graceful video fallback: if the teaser video source 404s, show the static image instead
+/* ── Teaser video fallback ──────────────────────────────────── */
 (function () {
-  var video = document.querySelector('.teaser-video');
-  if (!video) return;
-  video.addEventListener('error', showFallback, true);
-  var source = video.querySelector('source');
-  if (source) source.addEventListener('error', showFallback);
-
+  var v = document.querySelector('.teaser-video');
+  if (!v) return;
   function showFallback() {
-    video.style.display = 'none';
-    var fallback = document.querySelector('.teaser-fallback-img');
-    if (fallback) fallback.style.display = 'block';
+    v.style.display = 'none';
+    var fb = document.querySelector('.teaser-fallback-img');
+    if (fb) fb.style.display = 'block';
   }
+  var src = v.querySelector('source');
+  if (src) src.addEventListener('error', showFallback);
+  v.addEventListener('error', showFallback, true);
 })();
