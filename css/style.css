@@ -457,11 +457,21 @@ html[data-theme="dark"] .ic-moon { display: none; }
 /* ─── Org logos ──────────────────────────────────────────────────── */
 .org-logos {
   display: flex; justify-content: center; align-items: center;
-  gap: 28px; flex-wrap: wrap; margin-bottom: 10px;
+  gap: 36px; flex-wrap: nowrap; margin-bottom: 28px;
+  overflow-x: auto; padding: 4px 0;
+  scrollbar-width: none;
 }
-.org-logos img { height: 36px; width: auto; object-fit: contain; }
-.org-logos-secondary { margin-bottom: 24px; }
-.org-logos-secondary img { height: 50px; }
+.org-logos::-webkit-scrollbar { display: none; }
+.org-logos img {
+  height: 44px; width: auto; object-fit: contain; flex-shrink: 0;
+}
+/* Badge-style logos: allow taller to be visible */
+.org-logos img[alt="HKUST(GZ)"]   { height: 44px; }
+.org-logos img[alt="DeepCybo"]     { height: 44px; }
+.org-logos img[alt="Zhongguancun Academy"],
+.org-logos img[alt="ZGCI"],
+.org-logos img[alt="HUST"],
+.org-logos img[alt="Beihang University"] { height: 68px; }
 
 /* ─── Footer ─────────────────────────────────────────────────────── */
 .footer {
