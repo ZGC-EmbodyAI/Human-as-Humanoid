@@ -124,7 +124,7 @@
         v.pause();
       }
     });
-  }, { threshold: 0.25 });
+  }, { rootMargin: '700px 0px', threshold: 0.05 });
 
   videos.forEach(function (v) { io.observe(v); });
 })();
