@@ -453,7 +453,7 @@ html[data-theme="dark"] .ic-moon { display: none; }
 }
 .task-video-pair {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 12px;
 }
 .task-video {
