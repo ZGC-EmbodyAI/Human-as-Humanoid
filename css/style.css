@@ -460,6 +460,7 @@ html[data-theme="dark"] .ic-moon { display: none; }
 .recovery-grid {
   display: flex; flex-direction: column;
   gap: 14px;
+  margin-top: 56px;
 }
 .recovery-row {
   display: grid;
