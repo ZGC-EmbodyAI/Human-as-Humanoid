@@ -28,12 +28,12 @@
       <span class="nav-gem"></span>H-as-H
     </a>
     <div class="nav-links">
+      <a href="#tasks">Tasks</a>
       <a href="#abstract">Abstract</a>
       <a href="#embodiment">PrimeU</a>
       <a href="#method">Method</a>
       <a href="#motion-recovery">Motion Recovery</a>
       <a href="#action-interface">Action Space</a>
-      <a href="#deployment">Deployment</a>
       <a href="#bibtex">BibTeX</a>
     </div>
     <button class="theme-btn" id="theme-btn" aria-label="Toggle dark mode">
@@ -157,6 +157,115 @@
 
 <main>
 
+<!-- ====== TASKS SHOWCASE ====== -->
+<section class="section" id="tasks">
+  <div class="wrap-wide">
+    <div class="section-head">
+      <div class="eyebrow reveal">Real-Robot Deployment</div>
+      <h2 class="section-title wide reveal" style="--d:60ms">Zero target-task robot demonstrations</h2>
+      <p class="section-lede reveal" style="--d:100ms">PhysDex, post-trained only with Human-as-Humanoid converted labels, deploys on seven real high-DoF manipulation tasks — ring placement, magic-cube packing, water pouring, cup stacking, and more — several without any target-task robot demonstrations.</p>
+    </div>
+
+    <div class="task-grid">
+      <article class="task-card reveal" style="--d:0ms">
+        <div class="task-card-head">
+          <h3>Magic-Cube Packing</h3>
+        </div>
+        <div class="task-video-pair">
+          <div class="task-video">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/tasks/mofang/mofang_ego_trimmed.mp4" type="video/mp4"></video>
+            <span class="task-video-tag">Ego</span>
+          </div>
+          <div class="task-video">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/tasks/mofang/mofang_exo_trimmed.mp4" type="video/mp4"></video>
+            <span class="task-video-tag">Exo</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="task-card reveal" style="--d:60ms">
+        <div class="task-card-head">
+          <h3>Cup Stacking</h3>
+        </div>
+        <div class="task-video-pair">
+          <div class="task-video">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/tasks/stack_cup/stack_cup_ego_trimmed.mp4" type="video/mp4"></video>
+            <span class="task-video-tag">Ego</span>
+          </div>
+          <div class="task-video">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/tasks/stack_cup/stack_cup_exo_trimmed.mp4" type="video/mp4"></video>
+            <span class="task-video-tag">Exo</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="task-card reveal" style="--d:0ms">
+        <div class="task-card-head">
+          <h3>Ring Toss</h3>
+        </div>
+        <div class="task-video-pair">
+          <div class="task-video">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/tasks/taoquan/taoquan_ego_trimmed.mp4" type="video/mp4"></video>
+            <span class="task-video-tag">Ego</span>
+          </div>
+          <div class="task-video">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/tasks/taoquan/taoquan_exo_trimmed.mp4" type="video/mp4"></video>
+            <span class="task-video-tag">Exo</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="task-card reveal" style="--d:60ms">
+        <div class="task-card-head">
+          <h3>Water Pouring</h3>
+        </div>
+        <div class="task-video-pair">
+          <div class="task-video">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/tasks/daoshui/daoshui_ego_trimmed.mp4" type="video/mp4"></video>
+            <span class="task-video-tag">Ego</span>
+          </div>
+          <div class="task-video">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/tasks/daoshui/daoshi_exo_trimmed.mp4" type="video/mp4"></video>
+            <span class="task-video-tag">Exo</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="task-card reveal" style="--d:0ms">
+        <div class="task-card-head">
+          <h3>Light-Bulb Installation</h3>
+        </div>
+        <div class="task-video-pair">
+          <div class="task-video">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/tasks/dengpao/dengpao_ego_trimmed.mp4" type="video/mp4"></video>
+            <span class="task-video-tag">Ego</span>
+          </div>
+          <div class="task-video">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/tasks/dengpao/dengpao_exo_trimmed.mp4" type="video/mp4"></video>
+            <span class="task-video-tag">Exo</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="task-card reveal" style="--d:60ms">
+        <div class="task-card-head">
+          <h3>Temperature Sensing</h3>
+        </div>
+        <div class="task-video-pair">
+          <div class="task-video">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/tasks/cewen/cewen_ego_trimmed.mp4" type="video/mp4"></video>
+            <span class="task-video-tag">Ego</span>
+          </div>
+          <div class="task-video">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/tasks/cewen/cewen_exo_trimmed.mp4" type="video/mp4"></video>
+            <span class="task-video-tag">Exo</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ====== ABSTRACT ====== -->
 <section class="section" id="abstract">
   <div class="wrap-narrow">
@@ -267,22 +376,152 @@
   </div>
 </section>
 
-<!-- ====== MOTION RECOVERY ====== -->
+<!-- ====== MOTION RECOVERY GRID ====== -->
 <section class="section" id="motion-recovery">
-  <div class="wrap">
+  <div class="wrap-wide">
     <div class="section-head">
       <div class="eyebrow reveal">Validation · Motion Recovery</div>
-      <h2 class="section-title wide reveal" style="--d:60ms">Ego-exo recovery outperforms wearable mocap</h2>
-      <p class="section-lede reveal" style="--d:100ms">Camera-only ego-exo recovery is compared against a wearable inertial motion-capture suit via projection onto the human video. The wearable suit shows visible drift; ego-exo recovery maintains closer alignment without giving up the egocentric stream needed by the deployed policy.</p>
+      <h2 class="section-title wide reveal" style="--d:60ms">Recovered motion across subjects</h2>
+      <p class="section-lede reveal" style="--d:100ms">Each row shows one subject's synchronized recovery outputs, in order: exocentric skeleton overlay, reconstructed mesh, 3D skeleton, and MuJoCo replay from front and side views.</p>
     </div>
-    <figure class="figure-card reveal" style="--d:100ms">
-      <img src="figures/ego_exo_recovery.jpg" alt="Ego-exo motion recovery vs wearable mocap comparison" loading="lazy">
-      <figcaption class="fig-caption">Projection-based comparison at matched timestamps: human video (a), camera-only ego-exo recovery (b), wearable motion capture (c). Inertial suit shows localization drift under close-range bimanual manipulation.</figcaption>
-    </figure>
-    <figure class="figure-card reveal" style="--d:140ms">
-      <img src="figures/ego_exo_compare.jpg" alt="End-to-end conversion and replay" loading="lazy">
-      <figcaption class="fig-caption">End-to-end conversion and replay at matched timestamps: source human video → recovered skeleton keypoints → simulator replay → <strong>real-robot replay</strong>, preserving approach, grasp, transfer, and release phases.</figcaption>
-    </figure>
+    <div class="recovery-grid">
+        <div class="recovery-row reveal" style="--d:0ms">
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject1/exo_skeleton_overlay.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject1/mesh.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject1/skeleton_3d.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject1/mujoco_front.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject1/mujoco_side.mp4" type="video/mp4"></video>
+          </div>
+        </div>
+        <div class="recovery-row reveal" style="--d:40ms">
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject2/exo_skeleton_overlay.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject2/mesh.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject2/skeleton_3d.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject2/mujoco_front.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject2/mujoco_side.mp4" type="video/mp4"></video>
+          </div>
+        </div>
+        <div class="recovery-row reveal" style="--d:80ms">
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject3/exo_skeleton_overlay.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject3/mesh.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject3/skeleton_3d.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject3/mujoco_front.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject3/mujoco_side.mp4" type="video/mp4"></video>
+          </div>
+        </div>
+        <div class="recovery-row reveal" style="--d:120ms">
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject4/exo_skeleton_overlay.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject4/mesh.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject4/skeleton_3d.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject4/mujoco_front.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject4/mujoco_side.mp4" type="video/mp4"></video>
+          </div>
+        </div>
+        <div class="recovery-row reveal" style="--d:160ms">
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject5/exo_skeleton_overlay.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject5/mesh.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject5/skeleton_3d.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject5/mujoco_front.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject5/mujoco_side.mp4" type="video/mp4"></video>
+          </div>
+        </div>
+        <div class="recovery-row reveal" style="--d:200ms">
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject6/exo_skeleton_overlay.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject6/mesh.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject6/skeleton_3d.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject6/mujoco_front.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject6/mujoco_side.mp4" type="video/mp4"></video>
+          </div>
+        </div>
+        <div class="recovery-row reveal" style="--d:240ms">
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject7/exo_skeleton_overlay.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject7/mesh.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject7/skeleton_3d.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject7/mujoco_front.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject7/mujoco_side.mp4" type="video/mp4"></video>
+          </div>
+        </div>
+        <div class="recovery-row reveal" style="--d:280ms">
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject8/exo_skeleton_overlay.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject8/mesh.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject8/skeleton_3d.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject8/mujoco_front.mp4" type="video/mp4"></video>
+          </div>
+          <div class="recovery-cell">
+            <video autoplay muted loop playsinline preload="none"><source data-src="videos/videos_by_person/subject8/mujoco_side.mp4" type="video/mp4"></video>
+          </div>
+        </div>
+    </div>
   </div>
 </section>
 
@@ -290,9 +529,9 @@
 <section class="section section--tint" id="action-interface">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow reveal">Validation · Action Space</div>
+      <div class="eyebrow reveal">Validation · Action Space &amp; FK-Aware Training</div>
       <h2 class="section-title reveal" style="--d:60ms">Human-derived labels are robot-compatible</h2>
-      <p class="section-lede reveal" style="--d:100ms">A discrete action tokenizer trained <em>only</em> on human-derived robot-action chunks is evaluated on held-out real-robot windows it never saw during fitting. Low cross-domain reconstruction error confirms that converted human actions occupy a manifold close to real PrimeU demonstrations.</p>
+      <p class="section-lede reveal" style="--d:100ms">A discrete action tokenizer trained <em>only</em> on human-derived robot-action chunks is evaluated on held-out real-robot windows it never saw during fitting. Low cross-domain reconstruction error confirms that converted human actions occupy a manifold close to real PrimeU demonstrations. FK-aware supervision (DS-HKC) further couples the 60 action dimensions through the robot kinematic chain, measuring whether induced wrist and fingertip poses remain consistent with task-space manipulation geometry.</p>
     </div>
     <div class="table-wrap reveal" style="--d:120ms">
       <table class="data-table">
@@ -311,18 +550,7 @@
         </tbody>
       </table>
     </div>
-  </div>
-</section>
-
-<!-- ====== FK TRAINING ====== -->
-<section class="section" id="fk-training">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow reveal">Validation · FK-Aware Training</div>
-      <h2 class="section-title reveal" style="--d:60ms">DS-HKC improves optimization geometry</h2>
-      <p class="section-lede reveal" style="--d:100ms">FK-aware supervision couples the 60 action dimensions through the robot kinematic chain. Rather than treating joints as independent regression targets, DS-HKC measures whether the induced wrist and fingertip poses remain consistent with task-space manipulation geometry.</p>
-    </div>
-    <figure class="figure-card reveal" style="--d:100ms">
+    <figure class="figure-card reveal" style="--d:140ms">
       <img src="figures/loss_storyline.jpg" alt="Training loss comparison: FK-aware vs joint-only" loading="lazy">
       <figcaption class="fig-caption">Training-loss comparison. FK-aware supervision (PhysDex, red) reaches lower loss under the same budget, with the PhysBrain-initialized model improving further beyond step 6k.</figcaption>
     </figure>
@@ -330,61 +558,6 @@
 </section>
 
 <!-- ====== DEPLOYMENT ====== -->
-<section class="section section--tint" id="deployment">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow reveal">Real-Robot Deployment</div>
-      <h2 class="section-title reveal" style="--d:60ms">Zero target-task robot demonstrations</h2>
-      <p class="section-lede reveal" style="--d:100ms">PhysDex, post-trained only with Human-as-Humanoid converted labels, deploys on seven real high-DoF manipulation tasks — ring placement, magic-cube packing, water pouring, cup stacking, and more — several without any target-task robot demonstrations.</p>
-    </div>
-
-    <div class="carousel reveal" id="task-carousel" style="--d:80ms">
-      <button class="carousel-arrow prev" aria-label="Previous">&#8592;</button>
-      <div class="carousel-track-wrap">
-        <div class="carousel-track">
-          <figure class="carousel-slide">
-            <img src="figures/task_rollouts.jpg" alt="Synchronized rollout frames across seven tasks" loading="lazy">
-            <figcaption>Synchronized rollout frames. Upper row: egocentric policy observation. Lower row: third-person view at matched phases.</figcaption>
-          </figure>
-          <figure class="carousel-slide">
-            <img src="figures/setup.jpg" alt="Data collection setup" loading="lazy">
-            <figcaption>Ego-exo data-collection setup: egocentric cameras (policy observations) + synchronized exocentric cameras (motion recovery evidence).</figcaption>
-          </figure>
-          <figure class="carousel-slide">
-            <img src="figures/capture_setup.jpg" alt="Capture rig" loading="lazy">
-            <figcaption>Capture rig used for synchronized ego-exo human demonstration collection.</figcaption>
-          </figure>
-        </div>
-      </div>
-      <button class="carousel-arrow next" aria-label="Next">&#8594;</button>
-    </div>
-
-    <figure class="figure-card reveal" style="--d:120ms">
-      <img src="figures/final_success.png" alt="Stage-final composite score across seven real-robot tasks" loading="lazy">
-      <figcaption class="fig-caption">Stage-final composite score across seven real-robot tasks. PhysDex obtains higher composite scores than GR00T N1.7, with the largest gains in the human-only adaptation regime (no target-task robot demonstrations).</figcaption>
-    </figure>
-
-    <div class="video-grid reveal" style="--d:160ms">
-      <div class="video-card">
-        <video controls poster="figures/task_rollouts.jpg"><source src="videos/mofang/mofang_ego.mp4" type="video/mp4"></video>
-        <p class="video-label">Magic-Cube Packing</p>
-      </div>
-      <div class="video-card">
-        <video controls poster="figures/task_rollouts.jpg"><source src="videos/stack_cup/stack_cup_ego.mp4" type="video/mp4"></video>
-        <p class="video-label">Cup Stacking</p>
-      </div>
-      <div class="video-card">
-        <video controls poster="figures/task_rollouts.jpg"><source src="videos/ring_placement.mp4" type="video/mp4"></video>
-        <p class="video-label">Ring Placement</p>
-      </div>
-      <div class="video-card">
-        <video controls poster="figures/task_rollouts.jpg"><source src="videos/water_pouring.mp4" type="video/mp4"></video>
-        <p class="video-label">Water Pouring</p>
-      </div>
-    </div>
-    <p class="video-note">More task rollout videos coming soon.</p>
-  </div>
-</section>
 
 <!-- ====== LIMITATIONS ====== -->
 <section class="section" id="limitations">
@@ -409,11 +582,10 @@
     <h2 class="section-title reveal" style="--d:60ms">BibTeX</h2>
     <div class="bibtex-box reveal" style="--d:100ms">
       <button class="copy-btn" id="copy-bibtex" type="button">Copy</button>
-      <pre id="bibtex-code">@inproceedings{humanashumanoid2026,
+      <pre id="bibtex-code">@misc{humanashumanoid2026,
   title     = {Human-as-Humanoid: Enabling Zero-Shot Humanoid Learning
                from Ego-Exo Human Videos with Human-Aligned Embodiments},
-  author    = {Author Names},
-  booktitle = {Conference on Robot Learning (CoRL)},
+  author    = {Xiaopeng Lin and Ruoqi Yang and Shijie Lian and Zhaolong Shen and Bin Yu and Changti Wu and Haibao Liu and Yuxiang Zhang and Hong Li and Qiyuan Su and Haochen Liu and Xuguo He and Yukun Shi and Cong Huang and Zhirui Zhang and Bojun Cheng and Kai Chen},
   year      = {2026}
 }</pre>
     </div>

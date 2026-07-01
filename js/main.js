@@ -100,6 +100,35 @@
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') box.classList.remove('active'); });
 })();
 
+/* ── Lazy-load & viewport-gated playback for grid videos ─────── */
+(function () {
+  var videos = document.querySelectorAll('.task-video video, .recovery-cell video');
+  if (!videos.length) return;
+
+  function load(v) {
+    if (v.dataset.loaded) return;
+    v.dataset.loaded = '1';
+    v.querySelectorAll('source').forEach(function (s) {
+      if (s.dataset.src) s.src = s.dataset.src;
+    });
+    v.load();
+  }
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      var v = e.target;
+      if (e.isIntersecting) {
+        load(v);
+        v.play().catch(function () {});
+      } else {
+        v.pause();
+      }
+    });
+  }, { threshold: 0.25 });
+
+  videos.forEach(function (v) { io.observe(v); });
+})();
+
 /* ── Teaser video fallback ──────────────────────────────────── */
 (function () {
   var v = document.querySelector('.teaser-video');
