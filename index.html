@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="css/style.css?v=ego-contain">
+<link rel="stylesheet" href="css/style.css?v=teaser-video-card">
 
 <script>
   (function(){
@@ -115,12 +115,15 @@
       </a>
     </div>
 
-    <!-- Teaser -->
-    <figure class="hero-teaser reveal" style="--d:340ms">
-      <video class="teaser-video" autoplay muted loop playsinline poster="figures/teaser.jpg">
-        <source src="videos/teaser.mp4?v=clean-label" type="video/mp4">
+    <figure class="hero-video-card reveal" style="--d:320ms">
+      <video class="teaser-video" autoplay muted loop playsinline controls>
+        <source src="videos/teaser.mp4?v=clean-label-v2" type="video/mp4">
       </video>
-      <img src="figures/teaser.jpg" alt="Human-as-Humanoid overview" class="teaser-fallback-img" style="display:none">
+    </figure>
+
+    <!-- Teaser -->
+    <figure class="hero-teaser reveal" style="--d:380ms">
+      <img src="figures/teaser.jpg" alt="Human-as-Humanoid overview">
       <figcaption>
         <strong>Human-as-Humanoid</strong> replaces teleoperation-bound data collection with a near-real-time
         ego-exo human video conversion chain that generates executable 60-DoF humanoid action labels on
