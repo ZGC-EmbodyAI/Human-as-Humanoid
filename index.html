@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="css/style.css?v=task-layout">
+<link rel="stylesheet" href="css/style.css?v=task-groups">
 
 <script>
   (function(){
@@ -161,11 +161,17 @@
   <div class="wrap-wide">
     <div class="section-head">
       <div class="eyebrow reveal">Real-Robot Deployment</div>
-      <h2 class="section-title wide reveal" style="--d:60ms">Zero target-task robot demonstrations</h2>
-      <p class="section-lede reveal" style="--d:100ms">PhysDex, post-trained only with Human-as-Humanoid converted labels, deploys on seven real high-DoF manipulation tasks — ring placement, magic-cube packing, water pouring, cup stacking, and more — several without any target-task robot demonstrations.</p>
+      <h2 class="section-title wide reveal" style="--d:60ms">Real-robot deployment across training regimes</h2>
+      <p class="section-lede reveal" style="--d:100ms">PhysDex deploys on real high-DoF manipulation tasks under two data settings: zero-shot deployment from human-only converted labels, and few-shot adaptation with a small amount of real-robot data.</p>
     </div>
 
-    <div class="task-grid">
+    <div class="task-group reveal" style="--d:140ms">
+      <div class="task-group-head">
+        <div class="task-group-kicker">Zero-Shot</div>
+        <h3>Human-only converted data</h3>
+        <p>Magic-cube packing, cup stacking, ring toss, and water pouring are trained without target-task robot demonstrations.</p>
+      </div>
+      <div class="task-grid">
       <article class="task-card reveal" style="--d:0ms">
         <div class="task-card-head">
           <h3>Magic-Cube Packing</h3>
@@ -245,7 +251,16 @@
           </div>
         </div>
       </article>
+      </div>
+    </div>
 
+    <div class="task-group reveal" style="--d:180ms">
+      <div class="task-group-head">
+        <div class="task-group-kicker">Few-Shot</div>
+        <h3>Human data plus limited real-robot data</h3>
+        <p>Light-bulb installation and temperature sensing use Human-as-Humanoid converted labels together with a small amount of real-robot data.</p>
+      </div>
+      <div class="task-grid task-grid--fewshot">
       <article class="task-card reveal" style="--d:0ms">
         <div class="task-card-head">
           <h3>Light-Bulb Installation</h3>
@@ -285,6 +300,7 @@
           </div>
         </div>
       </article>
+      </div>
     </div>
   </div>
 </section>
