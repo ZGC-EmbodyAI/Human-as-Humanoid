@@ -48,8 +48,7 @@
     sections.forEach(function (s) { if (s.offsetTop <= y) active = s; });
     links.forEach(function (a) {
       var matches = active && a.getAttribute('href') === '#' + active.id;
-      a.style.background = matches ? 'var(--accent-ghost)' : '';
-      a.style.color = matches ? 'var(--accent)' : '';
+      a.classList.toggle('active', !!matches);
     });
   }
   window.addEventListener('scroll', onScroll, { passive: true });
