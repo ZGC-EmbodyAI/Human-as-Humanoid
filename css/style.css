@@ -249,25 +249,6 @@ html[data-theme="dark"] .ic-moon { display: none; }
   color: var(--ink-3); background: var(--surface-2); border-color: var(--line);
 }
 .btn--muted:hover { color: var(--ink-2); background: var(--surface); box-shadow: none; }
-.btn--disabled {
-  color: var(--ink-3);
-  background: var(--surface-2);
-  cursor: default;
-  pointer-events: none;
-}
-.btn-note {
-  display: inline-flex;
-  align-items: center;
-  padding: 2px 7px;
-  border-radius: 999px;
-  background: var(--warm-soft);
-  color: var(--warm);
-  font-size: .72em;
-  font-weight: 700;
-  text-transform: uppercase;
-  line-height: 1.2;
-}
-
 /* ─── Teaser figure ──────────────────────────────────────────────── */
 .hero-video-card,
 .hero-teaser {
@@ -847,10 +828,6 @@ html[data-theme="dark"] .ic-moon { display: none; }
     min-height: 42px;
   }
   .btn svg { width: 16px; height: 16px; }
-  .btn-note {
-    font-size: .68em;
-    padding: 2px 6px;
-  }
   .nav-links { display: none; }
   .hero-video-card,
   .hero-teaser {
