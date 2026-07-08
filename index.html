@@ -23,10 +23,11 @@
 
 <!-- ====== VIDEO HERO ====== -->
 <section class="video-hero" id="top">
-  <video class="video-hero-video" autoplay muted loop playsinline poster="figures/teaser.jpg">
+  <video class="video-hero-video" autoplay muted loop playsinline preload="auto" poster="figures/teaser.jpg">
     <source src="videos/teaser.mp4" type="video/mp4">
   </video>
   <div class="video-hero-overlay"></div>
+  <div class="video-hero-loader" id="video-hero-loader"><span class="video-hero-spinner"></span></div>
   <a href="#overview" class="video-hero-scroll" aria-label="Scroll to content">
     <span>Scroll</span>
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14m0 0l-6-6m6 6l6-6"/></svg>

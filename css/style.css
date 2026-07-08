@@ -161,6 +161,26 @@ html[data-theme="dark"] .ic-moon { display: none; }
   background: linear-gradient(180deg, rgba(3,5,12,0) 70%, rgba(3,5,12,.65) 100%);
   pointer-events: none;
 }
+.video-hero-loader {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: #05060a;
+  opacity: 1; transition: opacity .4s ease;
+  z-index: 1;
+}
+.video-hero-loader.is-hidden {
+  opacity: 0; pointer-events: none;
+}
+.video-hero-spinner {
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 3px solid rgba(255,255,255,.25);
+  border-top-color: rgba(255,255,255,.9);
+  animation: video-hero-spin .8s linear infinite;
+}
+@keyframes video-hero-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .video-hero-spinner { animation-duration: 1.6s; }
+}
 .video-hero-scroll {
   position: absolute; left: 50%; bottom: 34px;
   transform: translateX(-50%);

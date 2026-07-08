@@ -9,6 +9,25 @@
   });
 })();
 
+/* ── Video hero loader ─────────────────────────────────────── */
+(function () {
+  var v = document.querySelector('.video-hero-video');
+  var loader = document.getElementById('video-hero-loader');
+  if (!v || !loader) return;
+  var hidden = false;
+  function hide() {
+    if (hidden) return;
+    hidden = true;
+    loader.classList.add('is-hidden');
+  }
+  if (v.readyState >= 3) { hide(); }
+  else {
+    v.addEventListener('canplay', hide, { once: true });
+    v.addEventListener('error', hide, { once: true });
+    setTimeout(hide, 6000);
+  }
+})();
+
 /* ── Hide fixed sidebar nav while video hero is in view ───────── */
 (function () {
   var hero = document.querySelector('.video-hero');
