@@ -199,7 +199,13 @@ html[data-theme="dark"] .ic-moon { display: none; }
   .video-hero-scroll { animation: none; }
 }
 @media (max-width: 720px) {
-  .video-hero-scroll { bottom: 20px; }
+  .video-hero {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+  .video-hero-video { object-fit: contain; background: #05060a; }
+  .video-hero-overlay { background: linear-gradient(180deg, rgba(3,5,12,0) 78%, rgba(3,5,12,.75) 100%); }
+  .video-hero-scroll { display: none; }
 }
 
 /* ─── Hero ───────────────────────────────────────────────────────── */
