@@ -9,6 +9,19 @@
   });
 })();
 
+/* ── Hide fixed sidebar nav while video hero is in view ───────── */
+(function () {
+  var hero = document.querySelector('.video-hero');
+  var nav = document.querySelector('.nav');
+  if (!hero || !nav) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      nav.classList.toggle('nav--hidden', e.intersectionRatio > 0.4);
+    });
+  }, { threshold: [0, 0.4, 1] });
+  io.observe(hero);
+})();
+
 /* ── Progress bar ───────────────────────────────────────────── */
 (function () {
   var bar = document.getElementById('progress-bar');
@@ -128,14 +141,15 @@
   videos.forEach(function (v) { io.observe(v); });
 })();
 
-/* ── Teaser video fallback ──────────────────────────────────── */
+/* ── Video hero fallback ───────────────────────────────────── */
 (function () {
-  var v = document.querySelector('.teaser-video');
+  var v = document.querySelector('.video-hero-video');
   if (!v) return;
   function showFallback() {
     v.style.display = 'none';
-    var fb = document.querySelector('.teaser-fallback-img');
-    if (fb) fb.style.display = 'block';
+    var hero = v.closest('.video-hero');
+    if (hero) hero.style.backgroundImage = 'url(' + v.getAttribute('poster') + ')';
+    if (hero) { hero.style.backgroundSize = 'cover'; hero.style.backgroundPosition = 'center'; }
   }
   var src = v.querySelector('source');
   if (src) src.addEventListener('error', showFallback);
